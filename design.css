@@ -1,0 +1,36 @@
+body{
+    background-image: url(https://img.freepik.com/free-photo/swimming-pool_74190-2109.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697328000&semt=sph);
+    background-repeat: no-repeat;
+    background-size: cover   ;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

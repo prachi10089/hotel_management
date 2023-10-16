@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Booking Summary</title>
+  <style>
+    body {
+      background-image: url(https://img.freepik.com/free-photo/swimming-pool_74190-2109.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697328000&semt=sph);
+      background-repeat: no-repeat;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 800px;
+      border-radius: 20px;
+      background-color: #fcf8fbc5;
+      box-shadow: 0 0 50px rgba(7, 7, 7, 0.2);
+      padding: 60px;
+      display: flex;
+      align-items: center; /* Center text and video horizontally */
+    }
+
+    h1 {
+      color: rgb(5, 6, 6);
+      font-family: cursive;
+    }
+
+    p {
+      color: rgba(0, 0, 0, 0.904);
+      text-align: center;
+      font-weight: 200;
+    }
+
+    .video-container {
+      max-width: 300px;
+      max-height: 500px; /* Adjust height as needed */
+      overflow: hidden;
+      border-radius: 20px;
+      position: relative;
+      left: 20px;
+    }
+
+    #looping-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #rights {
+      padding: 20px;
+      background-color: #f5f5f5b6;
+      width: 1000px;
+    }
+
+    #proceed-button {
+      margin-top: 20px;
+      background-color: #07ec63b8;
+      border: none;
+      color: #1d1d1d;
+      padding: 10px 20px;
+      border-radius: 20px; /* Added border-radius */
+      cursor: pointer;
+      font-weight: bold;
+      position:relative;
+      top:175px;
+      right:200px;
+    }
+
+    #proceed-button:hover {
+      background-color: #0e8ccb8d;
+    }
+  </style>
+</head>
+<body>
+  <h1>BOOKING SUMMARY</h1>
+  <div class="container">
+    <div id="summary">
+      <!-- JavaScript will populate the summary here -->
+    </div>
+    <button id="proceed-button">Proceed to Pay ➡️</button>
+    <div class="video-container">
+      <video id="looping-video" autoplay muted loop>
+        <source src="agile.mp4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+  <p id="rights">All rights reserved. Copyright (2006 - 2023) - Booking.com™<br>By signing in or creating an account, you agree with our Terms & conditions and Privacy statement</p>
+
+  <script>
+    // JavaScript code to extract and display the form data and calculate the price
+    const params = new URLSearchParams(window.location.search);
+    const summaryContainer = document.getElementById("summary");
+    const proceedButton = document.getElementById("proceed-button");
+
+    if (params.has("name")) {
+      const name = params.get("name");
+      const email = params.get("email");
+      const checkIn = new Date(params.get("check_in"));
+      const checkOut = new Date(params.get("check_out"));
+      const roomType = params.get("room_type");
+      const numGuests = parseInt(params.get("num_guests"));
+      const numberOfRooms = parseInt(params.get("number_of_room"));
+
+      // Calculate the base price based on room type and number of rooms
+      let basePrice = 0;
+
+      if (roomType === "standard") {
+        basePrice = 1500;
+      } else if (roomType === "deluxe") {
+        basePrice = 3000;
+      } else if (roomType === "suite") {
+        basePrice = 5000;
+      }
+
+      // Calculate the total price based on the provided conditions
+      const pricePerPerson = 200;
+      const pricePerRoom = 700;
+
+      let totalPrice = basePrice;
+      totalPrice += (numGuests - 1) * pricePerPerson;
+      totalPrice += (numberOfRooms - 1) * pricePerRoom;
+
+      // Display the data and total price on the summary page
+      summaryContainer.innerHTML = `
+        <p>Name: ${name}</p>
+        <p>Email: ${email}</p>
+        <p>Check-In Date: ${checkIn.toDateString()}</p>
+        <p>Check-Out Date: ${checkOut.toDateString()}</p>
+        <p>Room Type: ${roomType}</p>
+        <p>Number of Guests: ${numGuests}</p>
+        <p>Number of Rooms: ${numberOfRooms}</p>
+        <p>Total Price: ₹${totalPrice}</p>
+      `;
+    } else {
+      summaryContainer.innerHTML = "<p>No data to display.</p>";
+    }
+
+    proceedButton.addEventListener("click", function () {
+      // Navigate to the next page when the button is clicked
+      window.location.href = "Payment.html";
+    });
+  </script>
+</body>
+</html>
