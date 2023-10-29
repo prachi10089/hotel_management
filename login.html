@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 10;
+            background-image: url(https://img.freepik.com/free-photo/swimming-pool_74190-2109.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697328000&semt=sph);
+    background-repeat: no-repeat;
+    background-size: cover   ;
+        }
+
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 100px;
+            padding: 70px;
+            background-color: #ffffffb5;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .container h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+        }
+
+        .form-group input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .form-group button {
+            width: px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="#" id="loginForm" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="email">Email ID:</label>
+                <input type="email" id="email" name="uemail" placeholder="Enter your email id" onblur="validateEmail()" required>
+                <span class="message" id="email-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" onblur="validatePassword()">
+                <span class="message" id="password-message"></span>
+            </div>
+            <div class="form-group">
+                <a href="welcome.html">
+                    <button type="button">Login</button>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateEmail() {
+            var email = document.getElementById("email").value;
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+            var message = document.getElementById("email-message");
+            if (regex.test(email)) {
+                message.innerHTML = "";
+                return true;
+            } else {
+                message.innerHTML = "Invalid email address!";
+                return false;
+            }
+        }
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,13}$/;
+            var message = document.getElementById("password-message");
+            if (regex.test(password)) {
+                message.innerHTML = "";
+                return true;
+            } else {
+                message.innerHTML = "Invalid Password!";
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Booking Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url(https://img.freepik.com/free-photo/swimming-pool_74190-2109.jpg?size=626&ext=jpg&ga=GA1.1.1413502914.1697328000&semt=sph);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .payment-form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button#order { /* Added an ID to the button for styling */
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hotel Booking Payment</h1>
+    <div class="payment-form">
+        <form action="message.html" method="post"> <!-- Updated action attribute -->
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" name="cardNumber" required>
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" name="expiryDate" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="number" id="cvv" name="cvv" required>
+
+            <label for="cardType">Payment Type:</label>
+            <select id="cardType" name="cardType" required>
+                <option value="Visa">Visa</option>
+                <option value="MasterCard">MasterCard</option>
+                <option value="American Express">American Express</option>
+            </select>
+            <button type="button" id="order">Pay Now!</button> <!-- Changed button type to 'button' -->
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const orderButton = document.getElementById("order");
+
+            orderButton.addEventListener("click", function () {
+                // Navigate to the next page when the button is clicked
+                window.location.href = "message.html";
+            });
+        });
+    </script>
+</body>
+</html>
